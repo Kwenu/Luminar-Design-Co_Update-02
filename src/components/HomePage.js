@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import DotNavigation from "./DotNavigation";
-import ScrollIndicator from "./ScrollIndicator";
 import Particles from "./Particles";
 
 const HomePage = () => {
@@ -23,11 +22,12 @@ const HomePage = () => {
         <h1>Luminar Design Co</h1>
         <p>
         The Premier Web Design and Software Development Agency for Thriving Accommodation Brands.
-        </p>
-        <p>Luminar Design Co. is an innovative, full-service digital agency. Our expert Australian team specializes in creating amazing websites and cutting-edge software, tailored to meet the unique needs of the accommodation industry.
-          We work collaboratively to deliver exceptional digital products that not only enhance your business but also set you apart in an ever - evolving digital landscape.</p>
+        </p><br /><br />
+        <p className="para">At Luminar, we're a passionate team of designers, developers, and digital strategists 
+          committed to helping small businesses thrive online. Based in Melbourne and Sydney we specialize in crafting 
+          clean, functional, and conversion-driven websites that tell your story and grow your business.</p>
         <button className="btn">Contact Us</button>
-        <ScrollIndicator />
+        <div class="section"></div>
       </div>
     </div>
   );

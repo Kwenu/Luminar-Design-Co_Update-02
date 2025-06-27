@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +11,15 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  // Disable body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isOpen]);
+
   return (
     <>
       <div className="navbar" onClick={toggleMenu}>
@@ -22,8 +31,8 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="nav-overlay">
-          <button className="close-btn" onClick={closeMenu}>X</button>
+        <div className={`nav-overlay ${isOpen ? 'open' : ''}`}>
+          <button className="close-btn" onClick={closeMenu}>×</button>
           <ul className="nav-menu">
             <li><a href="#home" onClick={closeMenu}>Home</a></li>
             <li><a href="#work" onClick={closeMenu}>Our Work</a></li>

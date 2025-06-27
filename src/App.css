@@ -1,0 +1,8 @@
+.gradient-background,
+.content-container,
+.particles-container,
+.grid-overlay,
+.glow,
+.noise-overlay {
+  z-index: 1 !important;
+}

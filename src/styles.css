@@ -7,7 +7,7 @@
 body {
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
   overflow: hidden;
-  background-color: #050505;
+  background-color: #ffffff;
   color: white;
   height: 100vh;
   display: flex;
@@ -17,9 +17,9 @@ body {
 
 .content-container {
   position: relative;
-  z-index: 10;
   text-align: center;
   max-width: 600px;
+  margin-top: -50px;
   padding: 2rem;
 }
 
@@ -29,7 +29,7 @@ h1 {
   width: 600px;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  background: linear-gradient(to right, #fff, #acacac);
+  background: linear-gradient(to right, #000000, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
@@ -37,11 +37,11 @@ h1 {
 
 p {
   font-size: 1.2rem;
-  width: 1200px;
-  margin-left: -350px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
+  width: 1000px;
+  margin-left: -235px;
+  line-height: 2;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.1rem;
 }
 
 .btn {
@@ -49,6 +49,7 @@ p {
   color: rgb(0, 0, 0);
   font-weight: 600;
   font-size: 1rem;
+  margin-top: 30px;
   padding: 0.8rem 2rem;
   border: none;
   border-radius: 50px;
@@ -56,12 +57,12 @@ p {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 20px rgba(255, 58, 130, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 58, 130, 0.4);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
 }
 
 .gradient-background {
@@ -78,33 +79,6 @@ p {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
-}
-
-.sphere-1 {
-  width: 40vw;
-  height: 40vw;
-  background: linear-gradient(40deg, rgba(32, 195, 23, 0.8), rgba(231, 46, 46, 0.4));
-  top: -10%;
-  left: -10%;
-  animation: float-1 15s ease-in-out infinite alternate;
-}
-
-.sphere-2 {
-  width: 45vw;
-  height: 45vw;
-  background: linear-gradient(240deg, rgba(57, 161, 44, 0.8), rgba(206, 41, 41, 0.4));
-  bottom: -20%;
-  right: -10%;
-  animation: float-2 18s ease-in-out infinite alternate;
-}
-
-.sphere-3 {
-  width: 30vw;
-  height: 30vw;
-  background: linear-gradient(120deg, rgba(133, 89, 255, 0.5), rgba(98, 216, 249, 0.3));
-  top: 60%;
-  left: 20%;
-  animation: float-3 20s ease-in-out infinite alternate;
 }
 
 .noise-overlay {
@@ -155,8 +129,8 @@ p {
   height: 100%;
   background-size: 40px 40px;
   background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.093) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.125) 1px, transparent 1px);
   z-index: 2;
 }
 
@@ -164,7 +138,7 @@ p {
   position: absolute;
   width: 40vw;
   height: 40vh;
-  background: radial-gradient(circle, rgba(72, 0, 255, 0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(36, 36, 36, 0.166), transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -196,7 +170,7 @@ p {
 
 .particle {
   position: absolute;
-  background: white;
+  background: rgb(0, 0, 0);
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
@@ -204,18 +178,18 @@ p {
 
 .navbar {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 40px;
+  right: 53px;
   cursor: pointer;
   z-index: 30;
 }
 
 .hamburger span {
   display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px;
-  background: white;
+  width: 30px;
+  height: 4px;
+  margin: 7px;
+  background: rgb(0, 0, 0);
   transition: all 0.3s ease;
 }
 
@@ -225,7 +199,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(218, 217, 217);
+  background: rgb(0, 0, 0);
   z-index: 50;
   display: flex;
   flex-direction: column;
@@ -249,8 +223,6 @@ p {
 /* Close button */
 .close-btn {
   position: absolute;
-  top: 20px;
-  right: 30px;
   font-size: 2rem;
   background: none;
   border: none;
@@ -281,44 +253,88 @@ p {
   color: #555;
 }
 
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 1000; /* Must be higher than all other elements */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.nav-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  z-index: 10000;
+}
+
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-menu li {
+  margin: 20px 0;
+}
+
+.nav-menu li a {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .dot-nav {
   position: absolute;
-  right: 20px;
-  top: 50%;
+  right: 70px;
+  top: 49%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 29px;
   cursor: pointer;
-  z-index: 20;
 }
 
 .dot {
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  border: 1px solid #fff; /* change to white */
+  border: 1px solid #000000; /* change to white */
   background: transparent;
 }
 
 .dot.active {
-  background: white; /* visible dot */
-}
-
-.scroll-indicator {
-  margin-top: 2rem;
-  font-size: 1.5rem;
-  color: white; /* Make it visible */
-  cursor: pointer;
-  z-index: 20;
-  position: relative;
-}
-
-.scroll-section {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: rgb(0, 0, 0); /* visible dot */
 }
 
 .nav-menu ul {
@@ -337,3 +353,26 @@ p {
   font-weight: bold;
 }
 
+.section::before {
+  cursor: pointer;
+  animation: bounce 1s ease infinite;
+  color: #000000;
+  content: '╲╱';
+  font-size: 1.2rem;
+  height: 4rem;
+  left: 50%;
+  top: 480px;
+  letter-spacing: -1px;
+  line-height: 4rem;
+  margin-left: -3rem;
+  opacity: 1;
+  position: absolute;
+  text-align: center;
+  width: 6rem;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-20%);
+  }
+}
