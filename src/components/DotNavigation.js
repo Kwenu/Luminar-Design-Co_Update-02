@@ -1,46 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 
 const DotNavigation = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState('home');
 
-  const sections = ["home", "section-2", "section-3", "section-4"];
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'work']; // Add more section IDs as you create them
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    const positions = sections.map((id) => {
-      const el = document.getElementById(id);
-      return el ? el.offsetTop : 0;
-    });
+      for (let section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
 
-    const currentIndex = positions.findIndex((pos, i) => {
-      const nextPos = positions[i + 1] || Infinity;
-      return scrollY >= pos - 10 && scrollY < nextPos - 10;
-    });
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once to set initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    setActiveIndex(currentIndex !== -1 ? currentIndex : 0);
-  };
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="dot-nav">
-      {sections.map((id, i) => (
-        <div
-          key={id}
-          className={`dot ${i === activeIndex ? "active" : ""}`}
-          onClick={() => scrollToSection(id)}
-        ></div>
-      ))}
+      <div 
+        className={`dot ${activeSection === 'home' ? 'active' : ''}`}
+        onClick={() => scrollToSection('home')}
+        title="Home"
+      ></div>
+      <div 
+        className={`dot ${activeSection === 'work' ? 'active' : ''}`}
+        onClick={() => scrollToSection('work')}
+        title="Our Work"
+      ></div>
+      {/* Add more dots for additional sections */}
     </div>
   );
 };
