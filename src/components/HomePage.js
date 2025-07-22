@@ -2,7 +2,11 @@ import React from "react";
 import Navbar from "./Navbar";
 import DotNavigation from "./DotNavigation";
 import Particles from "./Particles";
-import Aim from "./Aim";
+// import Aim from "./Aim";
+import OurMission from "./OurMission";
+import WhatMakesUsDifferent from "./WhatMakesUsDifferent";
+import WhatWeDo from "./WhatWeDo";
+import ContactUs from "./ContactUs";
 import "../styles.css";
 
 const HomePage = () => {
@@ -32,20 +36,50 @@ const HomePage = () => {
             clean, functional, and conversion-driven websites that tell your
             story and grow your business.
           </p>
-          <button className="btn">Contact Us</button>
+          <button className="btn" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+            Contact Us
+          </button>
         </div>
         
-        <div className="scroll-indicator" onClick={() => document.getElementById('work').scrollIntoView({ behavior: 'smooth' })}>
+        <div className="scroll-indicator" onClick={() => document.getElementById('mission').scrollIntoView({ behavior: 'smooth' })}>
           ╲╱
         </div>
       </section>
 
-      <section id="work" className="section">
+      <section id="mission" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
           <div className="noise-overlay"></div>
         </div>
-        <Aim />
+        <OurMission />
+        <Particles />
+      </section>
+
+      <section id="different" className="section">
+        <div className="gradient-background">
+          <div className="grid-overlay"></div>
+          <div className="noise-overlay"></div>
+        </div>
+        <WhatMakesUsDifferent />
+        <Particles />
+      </section>
+
+      <section id="services" className="section">
+        <div className="gradient-background">
+          <div className="grid-overlay"></div>
+          <div className="noise-overlay"></div>
+        </div>
+        <WhatWeDo />
+        <Particles />
+      </section>
+
+\      <section id="contact" className="section">
+        <div className="gradient-background">
+          <div className="grid-overlay"></div>
+          <div className="noise-overlay"></div>
+        </div>
+        <ContactUs />
+        <Particles />
       </section>
     </div>
   );
