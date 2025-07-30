@@ -9,23 +9,59 @@ const ContactUs = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can integrate with your backend or email service here
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus('');
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', company: '', message: '' });
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus(''), 5000);
+    }, 2000);
   };
 
   return (
-    <div className="section-container contact-section">
+    <div className="section-container2 contact-section">
       <h2>Contact Us</h2>
       <p className="contact-intro">
         Ready to transform your online presence? Let's start a conversation about your project.
@@ -75,6 +111,12 @@ const ContactUs = () => {
           <form className="contact-form" onSubmit={handleSubmit}>
             <h3>Get Your Free Discovery Call</h3>
             
+            {submitStatus === 'success' && (
+              <div className="success-message">
+                Thank you! Your message has been sent successfully. We'll get back to you soon!
+              </div>
+            )}
+            
             <div className="form-group">
               <label htmlFor="name">Full Name *</label>
               <input
@@ -85,7 +127,9 @@ const ContactUs = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="Your full name"
+                className={errors.name ? 'error' : ''}
               />
+              {errors.name && <div className="form-error">{errors.name}</div>}
             </div>
             
             <div className="form-group">
@@ -98,7 +142,9 @@ const ContactUs = () => {
                 onChange={handleInputChange}
                 required
                 placeholder="your@email.com"
+                className={errors.email ? 'error' : ''}
               />
+              {errors.email && <div className="form-error">{errors.email}</div>}
             </div>
             
             <div className="form-group">
@@ -123,11 +169,20 @@ const ContactUs = () => {
                 required
                 rows="5"
                 placeholder="Describe your project, goals, timeline, and any specific requirements..."
+                className={errors.message ? 'error' : ''}
               ></textarea>
+              {errors.message && <div className="form-error">{errors.message}</div>}
             </div>
             
-            <button type="submit" className="btn submit-btn">
-              🚀 Send Message
+            <button type="submit" className="btn submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <div className="loading-spinner"></div>
+                  Sending...
+                </>
+              ) : (
+                '🚀 Send Message'
+              )}
             </button>
             
             <p className="form-note">

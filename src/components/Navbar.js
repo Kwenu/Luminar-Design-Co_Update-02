@@ -1,88 +1,108 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../assets/logo2.png";
-import HomePage from "./HomePage";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDarkSection, setIsDarkSection] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleNavClick = (sectionId) => {
-    setIsOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
   useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("no-scroll");
-    } else {
-      document.body.classList.remove("no-scroll");
-    }
-  }, [isOpen]);
+    const checkCurrentSection = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      
+      // Define your sections and their themes
+      const sections = [
+        { id: 'home', element: document.getElementById('home'), isDark: false },
+        { id: 'mission', element: document.querySelector('.mission-container'), isDark: true },
+        { id: 'different', element: document.getElementById('different'), isDark: false },
+        { id: 'services', element: document.getElementById('services'), isDark: true },
+        { id: 'contact', element: document.getElementById('contact'), isDark: false }
+      ];
+
+      // Find which section we're currently in
+      let currentSection = sections[0]; // Default to home
+      
+      sections.forEach(section => {
+        if (section.element) {
+          const { offsetTop, offsetHeight } = section.element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            currentSection = section;
+          }
+        }
+      });
+
+      // Alternative method: Check by section background color
+      if (!currentSection.element) {
+        // Fallback to checking visible elements
+        const missionSection = document.querySelector('.mission-container');
+        if (missionSection) {
+          const rect = missionSection.getBoundingClientRect();
+          const isVisible = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+          if (isVisible) {
+            setIsDarkSection(true);
+            return;
+          }
+        }
+      }
+
+      setIsDarkSection(currentSection.isDark);
+    };
+
+    // Check initially
+    checkCurrentSection();
+
+    // Listen for scroll events
+    const handleScroll = () => {
+      checkCurrentSection();
+    };
+
+    // Listen for resize events
+    const handleResize = () => {
+      setTimeout(checkCurrentSection, 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize);
+
+    // Also check when DOM changes (for dynamic content)
+    const observer = new MutationObserver(() => {
+      setTimeout(checkCurrentSection, 100);
+    });
+
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true 
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <>
-      <div className="navbar" onClick={toggleMenu}>
-        <div className="hamburger">
+      <div className={`navbar ${isDarkSection ? 'navbar-light' : 'navbar-dark'}`}>
+        <div className="hamburger" onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
         </div>
-      </div>
-
-      {isOpen && (
-        <div className={`nav-overlay ${isOpen ? "open" : ""}`}>
-          <button className="close-btn" onClick={closeMenu}>
-            x
-          </button>
-          <div className="logo">
-            <a href="#home" onClick={closeMenu}>
-              <img src={Logo} alt="Luminar" />
-            </a>
-          </div>
+        
+        <div className={`nav-overlay ${isOpen ? 'open' : ''}`}>
+          <button className="close-btn" onClick={toggleMenu}>×</button>
           <ul className="nav-menu">
-            <li>
-              <a href="#home" onClick={() => handleNavClick("home")}>
-                Home
-              </a>
-            </li>
-            {/* <li>
-              <a href="#work" onClick={() => handleNavClick("work")}>
-                Our Work
-              </a>
-            </li> */}
-            <li>
-              <a href="#mission" onClick={() => handleNavClick("mission")}>
-                Our Mission
-              </a>
-            </li>
-            <li>
-              <a href="#different" onClick={() => handleNavClick("different")}>
-                What Makes Us Different
-              </a>
-            </li>
-            <li>
-              <a href="#services" onClick={() => handleNavClick("services")}>
-                What We Do
-              </a>
-            </li>
-            <li>
-              <a href="#contact" onClick={() => handleNavClick("contact")}>
-                Contact Us
-              </a>
-            </li>
+            <li><a href="#home" onClick={toggleMenu}>Home</a></li>
+            <li><a href="#mission" onClick={toggleMenu}>Our Mission</a></li>
+            <li><a href="#different" onClick={toggleMenu}>What Makes Us Different</a></li>
+            <li><a href="#services" onClick={toggleMenu}>What We Do</a></li>
+            <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
           </ul>
         </div>
-      )}
+      </div>
     </>
   );
 };

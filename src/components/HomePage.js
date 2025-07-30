@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import DotNavigation from "./DotNavigation";
 import Particles from "./Particles";
@@ -10,11 +10,19 @@ import ContactUs from "./ContactUs";
 import "../styles.css";
 
 const HomePage = () => {
+  useEffect(() => {
+    // This ensures navbar/dots are BLACK on white background
+    document.body.setAttribute('data-page-theme', 'light');
+    document.body.classList.add('light-page');
+    
+    return () => {
+      document.body.removeAttribute('data-page-theme');
+      document.body.classList.remove('light-page');
+    };
+  }, []);
+  
   return (
     <div className="landing-page">
-      <DotNavigation />
-      <Navbar />
-
       <section id="home" className="section">
         <div className="gradient-background">
           <div className="glow"></div>
@@ -22,7 +30,7 @@ const HomePage = () => {
           <div className="noise-overlay"></div>
           <Particles />
         </div>
-        
+
         <div className="content-container">
           <h1>Luminar Design Co</h1>
           <p>
@@ -36,16 +44,29 @@ const HomePage = () => {
             clean, functional, and conversion-driven websites that tell your
             story and grow your business.
           </p>
-          <button className="btn" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
+          <button
+            className="btn"
+            onClick={() =>
+              document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth" })
+            }
+          >
             Contact Us
           </button>
         </div>
-        
-        <div className="scroll-indicator" onClick={() => document.getElementById('mission').scrollIntoView({ behavior: 'smooth' })}>
+
+        <div
+          className="scroll-indicator"
+          onClick={() =>
+            document
+              .getElementById("mission")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+        >
           ╲╱
         </div>
       </section>
-
       <section id="mission" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
@@ -54,7 +75,6 @@ const HomePage = () => {
         <OurMission />
         <Particles />
       </section>
-
       <section id="different" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
@@ -63,7 +83,6 @@ const HomePage = () => {
         <WhatMakesUsDifferent />
         <Particles />
       </section>
-
       <section id="services" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
@@ -72,8 +91,7 @@ const HomePage = () => {
         <WhatWeDo />
         <Particles />
       </section>
-
-\      <section id="contact" className="section">
+      <section id="contact" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
           <div className="noise-overlay"></div>

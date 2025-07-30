@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
+import DotNavigation from "./DotNavigation";
 
 const OurMission = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -8,38 +10,54 @@ const OurMission = () => {
     setIsVisible(true);
   }, []);
 
+  useEffect(() => {
+    // This ensures navbar/dots are WHITE on dark background
+    document.body.setAttribute("data-page-theme", "dark");
+    document.body.classList.add("dark-page");
+
+    return () => {
+      document.body.removeAttribute("data-page-theme");
+      document.body.classList.remove("dark-page");
+    };
+  }, []);
+
   const visionPoints = [
     {
       icon: "✨",
       title: "Design Excellence",
-      description: "Crafting digital experiences that transcend ordinary expectations",
-      detail: "Every pixel serves a purpose, every interaction tells your story",
-      number: "01"
+      description:
+        "Crafting digital experiences that transcend ordinary expectations",
+      detail:
+        "Every pixel serves a purpose, every interaction tells your story",
+      number: "01",
     },
     {
       icon: "⚡",
-      title: "Performance Mastery", 
+      title: "Performance Mastery",
       description: "Lightning-fast, seamless experiences across every device",
       detail: "Because your audience deserves nothing less than perfection",
-      number: "02"
+      number: "02",
     },
     {
       icon: "🚀",
       title: "Growth Catalyst",
-      description: "Transforming visitors into customers, browsers into believers",
+      description:
+        "Transforming visitors into customers, browsers into believers",
       detail: "Your success is our blueprint, your growth is our mission",
-      number: "03"
-    }
+      number: "03",
+    },
   ];
 
   const stats = [
     { number: "150+", label: "Projects Delivered" },
     { number: "98%", label: "Client Satisfaction" },
-    { number: "5x", label: "Average ROI Increase" }
+    { number: "5x", label: "Average ROI Increase" },
   ];
 
   return (
     <div className="mission-container">
+      <DotNavigation />
+      <Navbar />
       {/* Geometric background elements */}
       <div className="bg-geometry">
         <div className="bg-circle bg-circle-1"></div>
@@ -65,7 +83,7 @@ const OurMission = () => {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 15}s`,
-              animationDuration: `${15 + Math.random() * 25}s`
+              animationDuration: `${15 + Math.random() * 25}s`,
             }}
           ></div>
         ))}
@@ -73,24 +91,26 @@ const OurMission = () => {
 
       <div className="content-wrapper">
         {/* Header Section */}
-        <div className={`header-section ${isVisible ? 'visible' : ''}`}>
+        <div className={`header-section ${isVisible ? "visible" : ""}`}>
           <div className="mission-badge">Our Philosophy</div>
           <h1 className="main-title-2">Mission</h1>
           <p className="subtitle">
-            Redefining the digital landscape through purposeful design and unwavering commitment to excellence
+            Redefining the digital landscape through purposeful design and
+            unwavering commitment to excellence
           </p>
         </div>
 
         {/* Mission Statement */}
-        <div className={`mission-statement ${isVisible ? 'visible' : ''}`}>
+        <div className={`mission-statement ${isVisible ? "visible" : ""}`}>
           <div className="statement-content">
             <div className="quote-mark">"</div>
             <p className="statement-text">
-              We don't just build websites - we architect digital experiences that 
-              <span className="highlight"> transform businesses</span> and 
-              <span className="highlight"> captivate audiences</span>. 
-              Our mission transcends code and pixels; we craft digital symphonies where 
-              every element harmonizes to create something extraordinary.
+              We don't just build websites - we architect digital experiences
+              that
+              <span className="highlight"> transform businesses</span> and
+              <span className="highlight"> captivate audiences</span>. Our
+              mission transcends code and pixels; we craft digital symphonies
+              where every element harmonizes to create something extraordinary.
             </p>
             <div className="statement-author">
               <div className="author-line"></div>
@@ -101,16 +121,18 @@ const OurMission = () => {
 
         {/* Vision Points */}
         <div className="vision-section">
-          <div className={`vision-header ${isVisible ? 'visible' : ''}`}>
+          <div className={`vision-header ${isVisible ? "visible" : ""}`}>
             <h2 className="vision-title">Our Commitment</h2>
-            <p className="vision-subtitle">Three pillars that define our approach</p>
+            <p className="vision-subtitle">
+              Three pillars that define our approach
+            </p>
           </div>
 
           <div className="vision-grid">
             {visionPoints.map((point, index) => (
               <div
                 key={index}
-                className={`vision-card ${isVisible ? 'visible' : ''}`}
+                className={`vision-card ${isVisible ? "visible" : ""}`}
                 style={{ transitionDelay: `${800 + index * 200}ms` }}
                 onMouseEnter={() => setActiveCard(index)}
                 onMouseLeave={() => setActiveCard(null)}
@@ -129,11 +151,11 @@ const OurMission = () => {
         </div>
 
         {/* Stats Section */}
-        <div className={`stats-section ${isVisible ? 'visible' : ''}`}>
+        <div className={`stats-section ${isVisible ? "visible" : ""}`}>
           <div className="stats-grid">
             {stats.map((stat, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="stat-item"
                 style={{ transitionDelay: `${1400 + index * 100}ms` }}
               >
@@ -145,7 +167,7 @@ const OurMission = () => {
         </div>
 
         {/* Call to Action */}
-        <div className={`cta-section ${isVisible ? 'visible' : ''}`}>
+        <div className={`cta-section ${isVisible ? "visible" : ""}`}>
           <div className="cta-content">
             <h3 className="cta-title">Ready to Begin?</h3>
             <p className="cta-text">
