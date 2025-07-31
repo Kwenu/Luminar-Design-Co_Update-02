@@ -83,7 +83,7 @@ const ContactUs = () => {
             <div className="contact-details">
               <h4>Call Us</h4>
               <p>+61 (0) 123 456 789</p>
-              <span>Mon-Fri, 9AM-5PM AEST</span>
+              <span>Monday - Friday, 9AM-5PM</span>
             </div>
           </div>
           
