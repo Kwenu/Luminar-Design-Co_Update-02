@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Luminar-Design-Co_Update-02/static/css/main.51f08904.css",
-    "main.js": "/Luminar-Design-Co_Update-02/static/js/main.db50a4d5.js",
+    "main.css": "/Luminar-Design-Co_Update-02/static/css/main.b5cd9606.css",
+    "main.js": "/Luminar-Design-Co_Update-02/static/js/main.c31decea.js",
     "static/js/453.2a54362d.chunk.js": "/Luminar-Design-Co_Update-02/static/js/453.2a54362d.chunk.js",
     "index.html": "/Luminar-Design-Co_Update-02/index.html",
-    "main.51f08904.css.map": "/Luminar-Design-Co_Update-02/static/css/main.51f08904.css.map",
-    "main.db50a4d5.js.map": "/Luminar-Design-Co_Update-02/static/js/main.db50a4d5.js.map",
+    "main.b5cd9606.css.map": "/Luminar-Design-Co_Update-02/static/css/main.b5cd9606.css.map",
+    "main.c31decea.js.map": "/Luminar-Design-Co_Update-02/static/js/main.c31decea.js.map",
     "453.2a54362d.chunk.js.map": "/Luminar-Design-Co_Update-02/static/js/453.2a54362d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.51f08904.css",
-    "static/js/main.db50a4d5.js"
+    "static/css/main.b5cd9606.css",
+    "static/js/main.c31decea.js"
   ]
 }
