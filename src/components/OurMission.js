@@ -91,17 +91,17 @@ const OurMission = () => {
 
       <div className="content-wrapper">
         {/* Header Section */}
-        <div className={`header-section ${isVisible ? "visible" : ""}`}>
+        {/* <div className={`header-section ${isVisible ? "visible" : ""}`}>
           <div className="mission-badge">Our Philosophy</div>
           <h1 className="main-title-2">Mission</h1>
           <p className="subtitle">
             Redefining the digital landscape through purposeful design and
             unwavering commitment to excellence
           </p>
-        </div>
+        </div> */}
 
         {/* Mission Statement */}
-        <div className={`mission-statement ${isVisible ? "visible" : ""}`}>
+        {/* <div className={`mission-statement ${isVisible ? "visible" : ""}`}>
           <div className="statement-content">
             <div className="quote-mark">"</div>
             <p className="statement-text">
@@ -117,7 +117,7 @@ const OurMission = () => {
               <span>The Philosophy That Drives Us</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Vision Points */}
         <div className="vision-section">
@@ -151,7 +151,7 @@ const OurMission = () => {
         </div>
 
         {/* Stats Section */}
-        <div className={`stats-section ${isVisible ? "visible" : ""}`}>
+        {/* <div className={`stats-section ${isVisible ? "visible" : ""}`}>
           <div className="stats-grid">
             {stats.map((stat, index) => (
               <div
@@ -164,7 +164,7 @@ const OurMission = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Call to Action */}
         <div className={`cta-section ${isVisible ? "visible" : ""}`}>

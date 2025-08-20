@@ -8,6 +8,7 @@ import WhatMakesUsDifferent from "./WhatMakesUsDifferent";
 import WhatWeDo from "./WhatWeDo";
 import ContactUs from "./ContactUs";
 import "../styles.css";
+import Logo from "../assets/logo3.png";
 
 const HomePage = () => {
   useEffect(() => {
@@ -32,10 +33,10 @@ const HomePage = () => {
         </div>
 
         <div className="content-container">
-          <h1>Luminar Design Co</h1>
+          <img src={Logo} alt="Luminar Design Co" />
+          {/* <h1>Luminar Design Co</h1> */}
           <p>
-            The Premier Web Design and Software Development Agency for Thriving
-            Accommodation Brands.
+            The Premier web design and software development agency for thriving brands.
           </p>
           <p className="para">
             At Luminar, we're a passionate team of designers, developers, and
@@ -83,14 +84,14 @@ const HomePage = () => {
         <WhatMakesUsDifferent />
         <Particles />
       </section>
-      <section id="services" className="section">
+      {/* <section id="services" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
           <div className="noise-overlay"></div>
         </div>
         <WhatWeDo />
         <Particles />
-      </section>
+      </section> */}
       <section id="contact" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>

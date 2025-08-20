@@ -14,11 +14,10 @@ const Navbar = () => {
       
       // Define your sections and their themes
       const sections = [
-        { id: 'home', element: document.getElementById('home'), isDark: false },
-        { id: 'mission', element: document.querySelector('.mission-container'), isDark: true },
-        { id: 'different', element: document.getElementById('different'), isDark: false },
-        { id: 'services', element: document.getElementById('services'), isDark: true },
-        { id: 'contact', element: document.getElementById('contact'), isDark: false }
+        { id: 'home', element: document.getElementById('home'), isDark: true },
+        { id: 'mission', element: document.querySelector('.mission-container'), isDark: false },
+        { id: 'different', element: document.getElementById('different'), isDark: true },
+        { id: 'contact', element: document.getElementById('contact'), isDark: true }
       ];
 
       // Find which section we're currently in

@@ -62,7 +62,7 @@ const ContactUs = () => {
 
   return (
     <div className="section-container2 contact-section">
-      <h2>Contact Us</h2>
+      <h2 className="section-title">Contact Us</h2>
       <p className="contact-intro">
         Ready to transform your online presence? Let's start a conversation about your project.
       </p>
@@ -193,7 +193,7 @@ const ContactUs = () => {
       </div>
       
       <div className="contact-footer">
-        <p>© 2024 Luminar Design Co. All rights reserved.</p>
+        <p>© 2025 Luminar Design Co. All rights reserved.</p>
       </div>
     </div>
   );
