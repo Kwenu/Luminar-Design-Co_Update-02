@@ -11,63 +11,130 @@ import "../styles.css";
 import Logo from "../assets/logo3.png";
 
 const HomePage = () => {
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
-    // This ensures navbar/dots are BLACK on white background
-    document.body.setAttribute('data-page-theme', 'light');
-    document.body.classList.add('light-page');
-    
-    return () => {
-      document.body.removeAttribute('data-page-theme');
-      document.body.classList.remove('light-page');
-    };
-  }, []);
-  
-  return (
-    <div className="landing-page">
-      <section id="home" className="section">
-        <div className="gradient-background">
-          <div className="glow"></div>
-          <div className="grid-overlay"></div>
-          <div className="noise-overlay"></div>
-          <Particles />
-        </div>
+    const handleScroll = () => {
+      const sections = ["home", "about", "work", "services"];
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-        <div className="content-container">
-          <img src={Logo} alt="Luminar Design Co" />
-          {/* <h1>Luminar Design Co</h1> */}
-          <p>
-            The Premier web design and software development agency for thriving brands.
-          </p>
-          <p className="para">
-            At Luminar, we're a passionate team of designers, developers, and
-            digital strategists committed to helping small businesses thrive
-            online. Based in Melbourne and Sydney we specialize in crafting
-            clean, functional, and conversion-driven websites that tell your
-            story and grow your business.
-          </p>
-          <button
-            className="btn"
-            onClick={() =>
-              document
-                .getElementById("contact")
-                .scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Contact Us
-          </button>
-        </div>
-
-        <div
-          className="scroll-indicator"
-          onClick={() =>
-            document
-              .getElementById("mission")
-              .scrollIntoView({ behavior: "smooth" })
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
           }
-        >
-          ╲╱
+        }
+      });
+
+      const winScroll = document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      setScrollProgress(scrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="redesign-container">
+      <div className="main-section">
+        <div className="logo-section">
+          <div className="logo">
+            <img src={Logo} alt="Logo" />
+          </div>
         </div>
-      </section>
+
+        <nav className="main-nav">
+          <a
+            href="#home"
+            onClick={() => scrollToSection("home")}
+            className={activeSection === "home" ? "active" : ""}
+          >
+            Home
+          </a>
+          <a
+            href="#about"
+            onClick={() => scrollToSection("about")}
+            className={activeSection === "about" ? "active" : ""}
+          >
+            About Us
+          </a>
+          <a
+            href="#work"
+            onClick={() => scrollToSection("work")}
+            className={activeSection === "work" ? "active" : ""}
+          >
+            Our Work
+          </a>
+          <a
+            href="#services"
+            onClick={() => scrollToSection("services")}
+            className={activeSection === "services" ? "active" : ""}
+          >
+            Our Services
+          </a>
+        </nav>
+
+        <div className="contact-info">
+          <span className="contact-label">GET IN TOUCH</span>
+          <a href="tel:1300456345" className="phone-number">
+            <span className="phone-icon"><i className="fas fa-phone"></i></span> 1300 456 345
+          </a>
+        </div>
+
+        {/* Dot Navigation */}
+        <div className="dot-navigation">
+          {["home", "about", "work", "services"].map((section, index) => (
+            <div
+              key={section}
+              className={`nav-dot ${activeSection === section ? "active" : ""}`}
+              onClick={() => scrollToSection(section)}
+            />
+          ))}
+        </div>
+
+        {/* Hero Section */}
+        <section id="home" className="hero-section">
+          <div className="hero-content-wrapper">
+            <div className="hero-image-section">
+            </div>
+
+            <div className="hero-text-section">
+              <h1 className="hero-title">
+                The Premier web design and software development agency for
+                thriving brands.
+              </h1>
+              <p className="hero-description">
+                At Luminar, we're a passionate team of designers, developers,
+                and digital strategists committed to helping small businesses
+                thrive online.
+              </p>
+              <button
+                className="cta-button"
+                onClick={() => scrollToSection("services")}
+              >
+                BOOK A FREE CONSULTATION
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
       <section id="mission" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>
@@ -84,14 +151,6 @@ const HomePage = () => {
         <WhatMakesUsDifferent />
         <Particles />
       </section>
-      {/* <section id="services" className="section">
-        <div className="gradient-background">
-          <div className="grid-overlay"></div>
-          <div className="noise-overlay"></div>
-        </div>
-        <WhatWeDo />
-        <Particles />
-      </section> */}
       <section id="contact" className="section">
         <div className="gradient-background">
           <div className="grid-overlay"></div>

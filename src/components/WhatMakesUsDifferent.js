@@ -1,46 +1,91 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import "../styles.css";
+import icon1 from "../assets/icon1.png";
+import icon2 from "../assets/icon2.png";
+import icon3 from "../assets/icon3.png";
+import icon4 from "../assets/icon4.png";
+import icon5 from "../assets/icon5.png";
+import icon6 from "../assets/icon6.png";
+import icon7 from "../assets/icon7.png";
 
 const WhatMakesUsDifferent = () => {
   const [visibleCards, setVisibleCards] = useState([]);
+  const [visibleCommitmentCards, setVisibleCommitmentCards] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
 
-  const differences = [
+  // Our Commitment data
+  const commitments = [
     {
       id: 1,
-      icon: "👥",
-      title: "Human-Centered Design",
-      description: "We build with your customer in mind, every step of the way.",
-      details: "User research • Journey mapping • Accessibility-first approach",
-      color: "from-blue-400 to-purple-500"
+      icon: icon1,
+      title: "Design Excellence",
+      description:
+        "Crafting design experiences that transcend ordinary expectations",
+      detail:
+        "Every pixel serves a purpose, every interaction tells your story",
     },
     {
       id: 2,
-      icon: "⚡",
-      title: "Small Team, Big Impact",
-      description: "You work directly with the people doing the work—no middlemen.",
-      details: "Direct communication • Faster decisions • Personal attention",
-      color: "from-orange-400 to-red-500"
+      icon: icon2,
+      title: "Performance Mastery",
+      description: "Lightning-fast, seamless experiences across every device",
+      detail: "Because your audience deserves nothing less than perfection",
     },
     {
       id: 3,
-      icon: "🔍",
-      title: "Transparent Process",
+      icon: icon3,
+      title: "Growth Catalyst",
+      description:
+        "Transforming visitors into customers, browsers into believers",
+      detail: "Your success is our blueprint, your growth is our mission",
+    },
+  ];
+
+  // What Makes Us Different data
+  const differences = [
+    {
+      id: 1,
+      position: "top-left",
+      icon: icon4,
+      title: "Small team, big impact",
+      description:
+        "You work directly with the people doing the work—no middlemen.",
+      details: [
+        "Direct communication",
+        "Faster decisions",
+        "Personal attention",
+      ],
+    },
+    {
+      id: 2,
+      position: "center",
+      icon: icon5,
+      title: "Human-centered design",
+      description:
+        "We build with your customer in mind, every step of the way.",
+      details: [
+        "User research",
+        "Journey mapping",
+        "Accessibility-first approach",
+      ],
+    },
+    {
+      id: 3,
+      position: "top-right",
+      icon: icon6,
+      title: "Transparent process",
       description: "Clear timelines, honest pricing, no surprises.",
-      details: "Weekly updates • Open communication • Fixed-price projects",
-      color: "from-green-400 to-emerald-500"
+      details: ["Weekly updates", "Open communication", "Fixed-price projects"],
     },
     {
       id: 4,
-      icon: "🚀",
-      title: "Future-Proof Sites",
-      description: "Modern, scalable, and easy to manage.",
-      details: "Latest tech stack • SEO optimized • Mobile-first design",
-      color: "from-purple-400 to-pink-500"
-    }
+      position: "bottom-right",
+      icon: icon7,
+      title: "Future-proof Sites",
+      description: "Modern, scalable and easy to manage.",
+      details: ["Latest tech stack", "SEO optimised", "Mobile-first design"],
+    },
   ];
 
   useEffect(() => {
@@ -49,124 +94,133 @@ const WhatMakesUsDifferent = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const cardId = parseInt(entry.target.dataset.cardId);
-            setVisibleCards(prev => [...new Set([...prev, cardId])]);
+            if (entry.target.classList.contains("commitment-card")) {
+              setVisibleCommitmentCards((prev) => [
+                ...new Set([...prev, cardId]),
+              ]);
+            } else {
+              setVisibleCards((prev) => [...new Set([...prev, cardId])]);
+            }
           }
         });
       },
-      { threshold: 0.2, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
     );
 
-    const titleObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-          }
-        });
-      },
-      { threshold: 0.5 }
+    const cards = document.querySelectorAll(
+      ".commitment-card, .difference-card-new"
     );
-
-    // Observe cards
-    const cards = document.querySelectorAll('.enhanced-difference-card');
-    cards.forEach(card => observer.observe(card));
-
-    // Observe title and subtitle
-    if (titleRef.current) titleObserver.observe(titleRef.current);
-    if (subtitleRef.current) titleObserver.observe(subtitleRef.current);
+    cards.forEach((card) => observer.observe(card));
 
     return () => {
       observer.disconnect();
-      titleObserver.disconnect();
     };
   }, []);
 
   return (
-    <div className="enhanced-section-container" ref={sectionRef}>
-      {/* Animated Background Elements */}
-      <div className="floating-shapes">
-        {[...Array(6)].map((_, i) => (
-          <div 
-            key={i} 
-            className={`floating-shape shape-${i + 1}`}
-            style={{
-              animationDelay: `${i * 0.5}s`,
-              left: `${10 + i * 15}%`,
-              top: `${20 + (i % 2) * 40}%`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Subtle Grid Pattern */}
-      <div className="subtle-grid" />
-
-      {/* Header Section */}
-      <div className="enhanced-header">
-        <div className="section-badge" ref={titleRef}>
-          <span>✨ Our Difference</span>
+    <div className="combined-section-container" ref={sectionRef}>
+      {/* Our Commitment Section */}
+      <section className="our-commitment-section">
+        <div className="commitment-header">
+          <h2 className="commitment-title">Our Commitment</h2>
+          <p className="commitment-subtitle">
+            Three pillars that define our approach
+          </p>
         </div>
-        <h2 className="enhanced-title">What Makes Us Different</h2>
-        <p className="enhanced-subtitle" ref={subtitleRef}>
-          We're not just another web agency. Here's what sets us apart from the competition.
-        </p>
-      </div>
 
-      {/* Cards Grid */}
-      <div className="enhanced-differences-grid">
-        {differences.map((item, index) => (
-          <div
-            key={item.id}
-            data-card-id={item.id}
-            className={`enhanced-difference-card ${
-              visibleCards.includes(item.id) ? 'visible' : ''
-            }`}
-            style={{ animationDelay: `${index * 0.1}s` }}
-            onMouseEnter={() => setHoveredCard(item.id)}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
-            {/* Card Glow Effect */}
-            <div className={`card-glow bg-gradient-to-r ${item.color}`} />
-            
-            {/* Card Content */}
-            <div className="card-content">
-              <div className="icon-wrapper">
-                <div className="icon-background" />
-                <span className="enhanced-icon">{item.icon}</span>
-                <div className="icon-pulse" />
-              </div>
-              
-              <h3 className="card-title-2">{item.title}</h3>
-              <p className="card-description-2">{item.description}</p>
-              
-              {/* Expandable Details */}
-              <div className={`card-details ${hoveredCard === item.id ? 'expanded' : ''}`}>
-                <div className="details-divider" />
-                <p className="details-text">{item.details}</p>
+        <div className="commitment-grid">
+          {commitments.map((item, index) => (
+            <div
+              key={item.id}
+              data-card-id={item.id}
+              className={`commitment-card ${
+                visibleCommitmentCards.includes(item.id) ? "visible" : ""
+              }`}
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              <div className="commitment-card-content">
+                <div className="commitment-icon-wrapper">
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="commitment-icon-img"
+                  />
+                </div>
+                <h3 className="commitment-card-title">{item.title}</h3>
+                <p className="commitment-card-description">
+                  {item.description}
+                </p>
+                <p className="commitment-card-detail">{item.detail}</p>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Corner Decoration */}
-            <div className="corner-decoration" />
-            
-            {/* Number Badge */}
-            <div className="number-badge">
-              <span>{String(item.id).padStart(2, '0')}</span>
-            </div>
+        {/* CTA Section */}
+        <div className="commitment-cta">
+          <h3 className="cta-title-new">Ready to begin?</h3>
+          <p className="cta-text-new">
+            Let's create something remarkable together
+          </p>
+          <div className="cta-buttons-new">
+            <button className="cta-btn-primary">START YOUR PROJECT</button>
+            <button className="cta-btn-secondary">VIEW OUR WORK</button>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      {/* Bottom CTA */}
-      {/* <div className="section-cta">
-        <p>Ready to experience the difference?</p>
-        <button className="cta-button-2">
-          <span>Let's Work Together</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M1 8h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-      </div> */}
+      {/* What Makes Us Different Section */}
+      <section className="differences-section">
+        <div className="differences-header">
+          <h2 className="differences-title">What makes us different?</h2>
+          <p className="differences-subtitle">
+            We're not just another web agency.
+            <br />
+            Here's what sets us apart from the competition.
+          </p>
+        </div>
+
+        <div className="differences-positioned-grid">
+          {/* Vertical Lines */}
+          <div className="vertical-line-container">
+            <div className="vertical-line-left"></div>
+            <div className="vertical-line-center"></div>
+            <div className="vertical-line-right"></div>
+          </div>
+
+          {differences.map((item, index) => (
+            <div
+              key={item.id}
+              data-card-id={item.id}
+              className={`difference-card-positioned position-${
+                item.position
+              } ${visibleCards.includes(item.id) ? "visible" : ""}`}
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              <div className="difference-icon-section-new">
+                <img
+                  src={item.icon}
+                  alt={item.title}
+                  className="difference-icon-positioned"
+                />
+              </div>
+
+              <div className="difference-content-section-new">
+                <h3 className="difference-title-positioned">{item.title}</h3>
+                <p className="difference-description-positioned">
+                  {item.description}
+                </p>
+
+                <ul className="difference-details-list-new">
+                  {item.details.map((detail, idx) => (
+                    <li key={idx}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
