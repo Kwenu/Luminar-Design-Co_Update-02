@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import DotNavigation from "./DotNavigation";
 import Particles from "./Particles";
-// import Aim from "./Aim";
 import OurMission from "./OurMission";
 import WhatMakesUsDifferent from "./WhatMakesUsDifferent";
 import WhatWeDo from "./WhatWeDo";
 import ContactUs from "./ContactUs";
 import "../styles.css";
-import Logo from "../assets/logo3.png";
+import Logo from "../assets/Rulers.png";
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -60,7 +59,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <nav className="main-nav">
+        {/* <nav className="main-nav">
           <a
             href="#home"
             onClick={() => scrollToSection("home")}
@@ -89,7 +88,7 @@ const HomePage = () => {
           >
             Our Services
           </a>
-        </nav>
+        </nav> */}
 
         <div className="contact-info">
           <span className="contact-label">GET IN TOUCH</span>
@@ -117,12 +116,12 @@ const HomePage = () => {
 
             <div className="hero-text-section">
               <h1 className="hero-title">
-                The Premier web design and software development agency for
+                The Premier web design and <br /> software development agency for <br />
                 thriving brands.
               </h1>
               <p className="hero-description">
-                At Luminar, we're a passionate team of designers, developers,
-                and digital strategists committed to helping small businesses
+                At Luminar, we're a passionate team of designers, <br /> developers,
+                and digital strategists committed to <br /> helping small businesses
                 thrive online.
               </p>
               <button

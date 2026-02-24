@@ -42,7 +42,7 @@ const OurMission = () => {
       <div className={`video-content-wrapper ${isVisible ? "visible" : ""}`}>
         <p className="video-text">
           Based in Melbourne and Sydney, we specialise in crafting clean, 
-          functional and conversion-driven websites that tell your story 
+          functional and conversion-driven websites that tell your story <br />
           and grow your business.
         </p>
       </div>

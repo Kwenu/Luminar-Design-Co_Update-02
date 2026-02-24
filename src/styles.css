@@ -60,8 +60,8 @@
   text-align: right;
   align-items: right;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: -30px;
+  gap: 2.1rem;
+  margin-top: -75px;
   padding-right: 60px;
 }
 
@@ -304,23 +304,30 @@
 }
 
 .hero-title {
-  font-size: 2.5rem;
-  font-weight: 400;
+  font-size: 45px;
+  font-weight: 300;
   line-height: 1.2;
-  color: #ffffff;
+  margin-top: -50px;
+  margin-bottom: 20px;
+  font-family: Bricolage Grotesque;
+  font-style: light;
+  color: #E4FFF9;
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 22px;
+  font-weight: 300;
   line-height: 1.8;
-  color: #b8c5d6;
+  margin-bottom: 20px;
+  font-family: Raleway;
+  color: #E4FFF9;
 }
 
 .cta-button {
   align-items: right;
   padding: 1rem;
   margin-left: 220px;
-  background-color: #00ffc8;
+  background-color: #00E6D2;
   border: none;
   border-radius: 8px;
   max-width: 400px;
@@ -369,12 +376,12 @@ section {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: #E4FFF9;
 }
 
 .section-description {
   font-size: 1.1rem;
-  color: #b8c5d6;
+  color: #E4FFF9;
   max-width: 700px;
   margin: 0 auto 3rem;
   line-height: 1.8;
@@ -489,7 +496,7 @@ section {
   font-size: 1.7rem;
   font-weight: 200;
   line-height: 1.6;
-  color: #ffffff;
+  color: #E4FFF9;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
   margin: 0;
   padding: 0 2rem;
@@ -2848,7 +2855,7 @@ section {
 /* Combined Section Container */
 .combined-section-container {
   width: 150vw;
-  background: linear-gradient(180deg, #021317 0%, #03333b 65%, #003d48 100%);
+  background: linear-gradient(180deg, #021317 0%, #0C3A3E 65%, #11575C 100%);
   position: relative;
   overflow: hidden;
   margin-top: -162px;
@@ -2873,13 +2880,14 @@ section {
 .commitment-title {
   font-size: 3.5rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #E4FFF9;
   margin-bottom: 20px;
   letter-spacing: -0.5px;
 }
 
 .commitment-subtitle {
   font-size: 1.2rem;
+  font-family: Raleway;
   color: #88b4b4;
   font-weight: 300;
 }
@@ -2960,11 +2968,12 @@ section {
 .cta-title-new {
   font-size: 2.5rem;
   font-weight: 400;
-  color: #ffffff;
+  color: #E4FFF9;
   margin-bottom: 16px;
 }
 
 .cta-text-new {
+  font-family: Raleway;
   font-size: 1.1rem;
   color: #88b4b4;
   margin-bottom: 40px;
@@ -2990,13 +2999,13 @@ section {
 }
 
 .cta-btn-primary {
-  background: #00ffc8;
+  background: #00E6D2;
   color: #082828;
   border: 2px solid #00ffc8;
 }
 
 .cta-btn-primary:hover {
-  background: #00e6b3;
+  background: #00e6d3dd;
   border-color: #00e6b3;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 255, 200, 0.3);
@@ -3033,13 +3042,14 @@ section {
 .differences-title {
   font-size: 3.5rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #E4FFF9;
   margin-bottom: 30px;
   letter-spacing: -0.5px;
 }
 
 .differences-subtitle {
   font-size: 1.15rem;
+  font-family: Raleway;
   color: #88b4b4;
   line-height: 1.8;
   font-weight: 300;
@@ -3161,7 +3171,7 @@ section {
 .difference-icon-section-new {
   flex-shrink: 0;
   margin-left: 30px;
-  margin-top: -40px;
+  margin-top: -45px;
 }
 
 .difference-icon-positioned {
@@ -3385,12 +3395,13 @@ section {
   font-size: 3.5rem;
   font-weight: 700;
   margin-top: -80px;
-  color: #ffffff;
+  color: #E4FFF9;
   margin-bottom: 16px;
   letter-spacing: -1px;
 }
 
 .contact-main-subtitle {
+  font-family: Raleway;
   font-size: 1.1rem;
   color: #94a3b8;
   max-width: 700px;
@@ -3467,14 +3478,14 @@ section {
 
 .contact-primary-text {
   font-size: 1.15rem;
-  color: #ffffff;
+  color: #E4FFF9;
   font-weight: 600;
   margin-bottom: 4px;
 }
 
 .contact-secondary-text {
   font-size: 0.9rem;
-  color: #64748b;
+  color: #94a3b8;
   font-weight: 400;
 }
 
@@ -3548,7 +3559,7 @@ section {
 
 .form-title {
   font-size: 1.8rem;
-  color: #ffffff;
+  color: #E4FFF9;
   margin-bottom: 32px;
   font-weight: 600;
   text-align: center;
@@ -3572,7 +3583,7 @@ section {
 .contact-form-redesign {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 25px;
 }
 
 .form-field {
@@ -3595,7 +3606,7 @@ section {
   border-radius: 8px;
   padding: 14px 16px;
   font-size: 1rem;
-  color: #ffffff;
+  color: #E4FFF9;
   font-family: inherit;
   transition: all 0.3s ease;
   outline: none;
@@ -3634,7 +3645,7 @@ section {
 
 /* Submit Button */
 .submit-button-redesign {
-  background: #00ffc8;
+  background: #00E6D2;  
   color: #0a1628;
   border: none;
   border-radius: 8px;
@@ -3654,7 +3665,7 @@ section {
 }
 
 .submit-button-redesign:hover:not(:disabled) {
-  background: #00e6b3;
+  background: #00e6d3d5;
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(0, 255, 200, 0.4);
 }
@@ -3682,6 +3693,7 @@ section {
 
 /* Footer */
 .contact-footer-redesign {
+  font-family: Raleway;
   text-align: center;
   margin-top: 60px;
   padding-top: 0;
