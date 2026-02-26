@@ -2924,20 +2924,21 @@ section {
 }
 
 .commitment-icon-wrapper {
+  color: #00E6D2;
   margin-bottom: 30px;
 }
 
 .commitment-icon-img {
   font-size: 4rem;
   display: inline-block;
-  color: #00ffc8;
+  color: #00E6D2;
   filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.3));
 }
 
 .commitment-card-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #00ffc8;
+  color: #00E6D2;
   margin-bottom: 20px;
   letter-spacing: 0.3px;
 }

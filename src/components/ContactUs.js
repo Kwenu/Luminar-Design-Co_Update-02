@@ -229,7 +229,7 @@ const ContactUs = () => {
 
       {/* Footer */}
       <div className="contact-footer-redesign">
-        <p>© 2025 Luminar Design Co. All rights reserved. Developed by Lingo</p>
+        <p>© 2026 Luminar Design Co. All rights reserved.</p>
       </div>
     </div>
   );

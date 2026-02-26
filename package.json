@@ -12,7 +12,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-    "homepage": "https://Kwenu.github.io/Luminar-Design-Co_Update-02",
+  "homepage": "https://kwenu.github.io/Luminar-Design-Co_Update-02",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
